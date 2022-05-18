@@ -1,0 +1,43 @@
+apply plugin: 'com.huawei.ohos.hap'
+apply plugin: 'com.huawei.ohos.decctest'
+//For instructions on signature configuration, see https://developer.harmonyos.com/cn/docs/documentation/doc-guides/ide_debug_device-0000001053822404#section1112183053510
+ohos {
+    signingConfigs {
+        debug {
+            storeFile file('C:\\Users\\dwx515244\\.ohos\\config\\auto_debug_70358000000048801.p12')
+            storePassword '000000180DDB8D7D5525C592AEA942E7B29361254B2928D2BB58AB14E642AAE61B8448D5583432D7'
+            keyAlias = 'debugKey'
+            keyPassword '000000180932440CF36B233205B1E06408ABAB7AC753CD6F1AD59A33F123E64A969469235A82F894'
+            signAlg = 'SHA256withECDSA'
+            profile file('C:\\Users\\dwx515244\\.ohos\\config\\auto_debug_cpp_70358000000048801.p7b')
+            certpath file('C:\\Users\\dwx515244\\.ohos\\config\\auto_debug_70358000000048801.cer')
+        }
+    }
+    compileSdkVersion 6
+    defaultConfig {
+        compatibleSdkVersion 6
+    }
+    buildTypes {
+        release {
+            proguardOpt {
+                proguardEnabled false
+                rulesFiles 'proguard-rules.pro'
+            }
+        }
+    }
+    externalNativeBuild {
+        path "src/main/cpp/CMakeLists.txt"
+        arguments "-v"
+//        abiFilters "arm64-v8a"
+        abiFilters "armeabi-v7a", "arm64-v8a"
+        cppFlags ""
+    }
+}
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar', '*.har'])
+    testImplementation 'junit:junit:4.13.1'
+    ohosTestImplementation 'com.huawei.ohos.testkit:runner:2.0.0.200'
+}
+decc {
+    supportType = ['html', 'xml']
+}

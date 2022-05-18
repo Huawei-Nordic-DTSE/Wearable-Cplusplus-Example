@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:height="match_parent"
+    ohos:width="match_parent"
+    ohos:orientation="vertical">
+
+
+    <Text
+        ohos:id="$+id:result"
+        ohos:height="match_parent"
+        ohos:background_element="#ed6262"
+        ohos:width="match_parent"
+        ohos:text_size="30fp"
+        ohos:text_color="#FF262323"
+        ohos:text="显示结果"/>
+
+
+
+</DirectionalLayout>
